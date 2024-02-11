@@ -5,14 +5,17 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Form from "@components/Form";
+import Spinner from "@components/Spinner";
 
 const CreatePost = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [submitting, setIsSubmitting] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "" });
+  const [loading, setLoading] = useState(false);
 
   const createPrompt: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    setLoading(true);
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -42,17 +45,21 @@ const CreatePost = () => {
       console.log(error);
     } finally {
       setIsSubmitting(false);
+      setLoading(false);
     }
   };
 
   return (
-    <Form
-      type='Create'
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={createPrompt}
-    />
+    <>
+      {loading && <Spinner />}
+      <Form
+        type='Create'
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={createPrompt}
+      />
+    </>
   );
 };
 
