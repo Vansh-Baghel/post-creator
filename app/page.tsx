@@ -1,4 +1,4 @@
-
+import Feed from "@components/Feed";
 
 export default function Home() {
   return (
@@ -12,6 +12,7 @@ export default function Home() {
         This is an application which will help you track your expense well.
       </p>
 
+      <Feed />
     </section>
   );
 }

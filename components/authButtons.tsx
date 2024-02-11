@@ -4,7 +4,6 @@ import Image from "next/image";
 import googleLogo from "@/public/google.png";
 import githubLogo from "@/public/github.png";
 import { signIn } from "next-auth/react";
-import { useEffect } from "react";
 
 export function GoogleSignInButton() {
   const handleClick = async () => {

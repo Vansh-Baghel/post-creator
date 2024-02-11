@@ -1,7 +1,6 @@
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
-import { redirect } from "next/navigation";
-import { NextAuthOptions, getServerSession } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import defaultImage from "@public/default-profile.webp";
 
 import CredentialsProvider from "next-auth/providers/credentials";

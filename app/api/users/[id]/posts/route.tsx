@@ -1,0 +1,18 @@
+import PostModel from "@models/posts";
+import { connectToDB } from "@utils/database";
+
+export const GET = async (request: any, { params }: any) => {
+  try {
+    await connectToDB();
+
+    const prompts = await PostModel.find({ creator: params.id }).populate(
+      "creator"
+    );
+
+    return new Response(JSON.stringify(prompts), { status: 200 });
+  } catch (error) {
+    return new Response("Failed to fetch prompts created by user", {
+      status: 500,
+    });
+  }
+};
