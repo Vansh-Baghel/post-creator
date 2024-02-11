@@ -18,7 +18,7 @@ const CreatePost = () => {
 
     try {
       console.log(session?._id);
-      
+
       const response = await axios.post("/api/post/new", {
         prompt: post.prompt,
         userId: session?._id,
@@ -28,7 +28,7 @@ const CreatePost = () => {
       //   method: "POST",
       //   body: JSON.stringify({
       //     prompt: post.prompt,
-      //     userId: session?.id,
+      //     userId: session?._id,
       //     tag: post.tag,
       //   }),
       // });

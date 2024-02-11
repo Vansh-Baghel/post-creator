@@ -5,6 +5,9 @@ export const GET = async (request: any, { params }: any) => {
   try {
     await connectToDB();
 
+    console.log(params.id);
+    
+
     const prompts = await PostModel.find({ creator: params.id }).populate(
       "creator"
     );
